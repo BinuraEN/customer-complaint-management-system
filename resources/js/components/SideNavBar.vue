@@ -53,15 +53,32 @@
 
         <ul class="pt-2">
             <!-- menu item -->
-            <menu-item v-model:isNavOpen="isOpen" />
+            <menu-item>
+                <template #icon>
+                    <font-awsome-icon icon="fa-solid fa-chart-line" />
+                </template>
+                Menu item 1
+                <template #submenuitems>
+                    <submenu-item>item 1</submenu-item>
+                    <submenu-item>item 2</submenu-item>
+                </template>
+            </menu-item>
+            <menu-item>
+                <template #icon>
+                    <font-awsome-icon icon="fa-solid fa-chart-line" />
+                </template>
+                Menu item 2
+            </menu-item>
         </ul>
     </div>
 </template>
 
 <script setup>
 import MenuItem from "./MenuItem.vue";
+import SubmenuItem from "./SubmenuItem.vue";
 
-import { ref } from "vue";
-let isOpen = ref(true);
+import { ref, provide } from "vue";
+const isOpen = ref(true);
 //let isSubmenuOpen = ref(false);
+provide("isNavOpen", isOpen);
 </script>
